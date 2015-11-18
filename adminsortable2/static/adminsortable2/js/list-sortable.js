@@ -86,6 +86,12 @@ jQuery(function($) {
 	var $step_field = $('#changelist-form-step');
 	var $page_field = $('#changelist-form-page');
 
+	if (typeof(sortable_current_page) === 'undefined') {
+		// workaround for issue 50
+		// list-sortable.js added to media, but change_list.html not included
+		return;
+	}
+
 	if (sortable_current_page == sortable_total_pages) {
 		$page_field.attr('max', sortable_total_pages - 1);
 		$page_field.val(sortable_current_page - 1);
